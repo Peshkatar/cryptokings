@@ -12,11 +12,13 @@ def index():
     )
 
 
+# TODO: kolla om det går att stoppa in detta i index()
 @app.route("/plot", methods=["GET", "POST"])  # type: ignore
 def plot():
     if request.method == "GET":
-        return "The URL /data is accessed directly. Try going to '/form' to submit form"
+        return "The URL /plot is accessed directly. Try going to '/' to submit form"
 
+    # kanske onödig if-sats
     if request.method == "POST":
         form_data = request.form
         plot_historical_data(form_data["symbol"])
