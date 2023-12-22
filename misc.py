@@ -13,9 +13,9 @@ def get_price(symbol: str, period="1d"):
     return data.history(period=period)["Close"].values[0]
 
 
-def plot_historical_data() -> None:
-    data = yahoo.Ticker("BTC-USD").history(period="30d")
-    plot = data.plot(y="Close", label="BTC-USD")
+def plot_historical_data(symbol: str = "BTC-USD") -> None:
+    data = yahoo.Ticker(symbol).history(period="30d")
+    plot = data.plot(y="Close", label=symbol)
     fig = plot.get_figure()
     fig.savefig(path.join("static", "images", "plot.png"))
 
